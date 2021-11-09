@@ -6,6 +6,10 @@ module.exports = function (config, logger, migrationName) {
     var up, down,
         ts = Date.now();
 
+    if (config.timestamp) {
+        ts = config.timestamp();
+    }
+
     if (typeof config.migrationsDir !== 'string') {
         throw new Error('configuration "migrationsDir" is missing');
     }
