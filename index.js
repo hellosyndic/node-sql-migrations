@@ -13,6 +13,7 @@ function migrate(config, adapter) {
         function rethrowOriginalError() {
             throw error;
         }
+        LOGGER.error(error)
         return adapter.dispose().then(rethrowOriginalError, rethrowOriginalError);
     });
 }
