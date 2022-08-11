@@ -45,7 +45,12 @@ module.exports = function (config, logger) {
             });
         },
         dispose: function dispose() {
-            return client.end();
+            const end = new Promise((resolve, reject) => {
+                client.end(()=> {
+                    resolve();
+                })
+            });
+            return end;
         }
     };
 };
